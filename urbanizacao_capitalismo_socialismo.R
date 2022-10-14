@@ -49,8 +49,7 @@ urb2 <- urb %>%
   view()
 
 urb3 <- urb %>%
-  filter(Entity %in% c("United States", "Germany", "Japan",
-                       "China", "Cuba", "North Korea")) %>%
+  filter(Entity %in% c("United States", "China")) %>%
   view()
 
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
@@ -72,8 +71,31 @@ ggplot(urb1, aes(x = fct_reorder(Entity, media), y = media, fill = Entity)) +
   theme(legend.position = "none",
         axis.text = element_text(color = "black"))
 
+ggplot(urb2, aes(x = Year, y = por_urb, 
+                 color = Entity, group = Entity)) +
+  geom_point(shape = 15, size = 2.5) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = c("#88CCEE", "#CC6677",
+                               "#DDCC77", "#117733",
+                               "#332288", "#AA4499"),
+                     labels = c("China", "Cuba", "Alemanha",
+                                "Japão", "Coreia do Norte", "Estados Unidos")) +
+  labs(x = "Tempo (anos)", y = "Pessoas vivendo em áreas urbanas (%)",
+       color = "Países") +
+  theme_ipsum(axis_text_size = 14, axis_title_size = 16) +
+  theme(axis.text = element_text(color = "black"))
 
-
+ggplot(urb3, aes(x = Year, y = por_urb, 
+                  group = Entity, col = Entity)) +
+  geom_line(size = 2.2) +
+  scale_color_manual(values = c("#1B9E77", "#D95F02"),
+                     labels = c("China", "Estados Unidos")) +
+  labs(x = "Tempo (anos)", y = "Pessoas vivendo em áreas urbanas (%)", 
+       color = "Países") +
+  theme_hc() +
+  theme(axis.title = element_text(size = 18),
+        axis.text = element_text(color = "black", size = 15),
+        legend.text = element_text(size = 12))
 
 
 
