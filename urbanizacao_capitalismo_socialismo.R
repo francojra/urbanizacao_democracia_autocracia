@@ -64,8 +64,11 @@ ggplot(urb1, aes(x = fct_reorder(Entity, media), y = media, fill = Entity)) +
   scale_fill_manual(values = c("#88CCEE", "#CC6677",
                                "#DDCC77", "#117733",
                                "#332288", "#AA4499")) +
+  scale_y_continuous(expand = expansion(mult = c(0,0))) +
+  scale_x_discrete(labels = c("China", "Coreia do Norte", "Cuba",
+                              "Alemanha", "Estados Unidos", "Japão")) +
   labs(x = "Países", y = "Pessoas vivendo em áreas urbanas (%)") +
-  theme_ipsum() +
+  theme_ipsum(axis_text_size = 14, axis_title_size = 16) +
   theme(legend.position = "none",
         axis.text = element_text(color = "black"))
 
