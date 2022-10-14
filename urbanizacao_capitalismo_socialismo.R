@@ -21,3 +21,46 @@ library(cols4all)
 library(hrbrthemes)
 library(ggthemes)
 
+# Carregar dados ---------------------------------------------------------------------------------------------------------------------------
+
+urb <- read.csv("share-of-population-urban.csv")
+view(urb)
+names(urb)
+
+# Manipular dados --------------------------------------------------------------------------------------------------------------------------
+
+urb <- urb %>%
+  select(-Code) %>%
+  rename(por_urb = Urban.population....of.total.population.) %>%
+  view()
+
+urb1 <- urb %>%
+  filter(Entity %in% c("United States", "Germany", "Japan",
+                       "China", "Cuba", "North Korea")) %>%
+  group_by(Entity) %>%
+  summarise(media = mean(por_urb),
+            sd = sd(por_urb), n = n(),
+            se = sd/sqrt(n)) %>%
+  view()
+
+urb2 <- urb %>%
+  filter(Entity %in% c("United States", "Germany", "Japan",
+                       "China", "Cuba", "North Korea")) %>%
+  view()
+
+urb3 <- urb %>%
+  filter(Entity %in% c("United States", "Germany", "Japan",
+                       "China", "Cuba", "North Korea")) %>%
+  view()
+
+# Gráficos ---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
