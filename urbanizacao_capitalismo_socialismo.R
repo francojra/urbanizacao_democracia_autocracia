@@ -55,7 +55,19 @@ urb3 <- urb %>%
 
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
+c4a("safe", 6)
 
+ggplot(urb1, aes(x = fct_reorder(Entity, media), y = media, fill = Entity)) +
+  geom_col(width = 0.9) +
+  geom_errorbar(aes(ymax = media + se, ymin = media - se),
+                width = 0.2, size = 0.8) +
+  scale_fill_manual(values = c("#88CCEE", "#CC6677",
+                               "#DDCC77", "#117733",
+                               "#332288", "#AA4499")) +
+  labs(x = "Países", y = "Pessoas vivendo em áreas urbanas (%)") +
+  theme_ipsum() +
+  theme(legend.position = "none",
+        axis.text = element_text(color = "black"))
 
 
 
